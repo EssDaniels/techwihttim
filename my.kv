@@ -1,0 +1,60 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+
+
+
+<MainWindow>
+    name:"main"
+
+    GridLayout:
+        cols:1
+
+        GridLayout:
+            cols:2
+
+            Label:
+
+                text:"Login"
+
+
+            TextInput:
+
+                id: name
+                hint_text:'hello'
+                multinline:False
+
+            Label:
+                text: "Password: "
+            TextInput:
+                id: passw
+
+                password: True
+                multinline:False
+
+        Button:
+            id: btn
+            text: "Connect"   if btn.state == "normal" else "Down"
+            background_color: 0.3,0.4,0.5,1
+            on_release:
+                app.root.current = "second" if passw.text == "klaudia" and name.text == "dawid" else "main"
+                root.manager.transition.direction = "left"
+
+<SecondWindow>
+    name: "second"
+
+
+
+
+    Button:
+        text: "Go BACK"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
+
+
+
+
+
